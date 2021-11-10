@@ -12,6 +12,8 @@ interface FinancingContextProps {
   finalMonth: number
   untilMonthTaxes: number
   untilMonthAmortization: number
+  initialMonthInstallment: number
+  finalMonthInstallment: number
   toPay: number
   monthlyInstallment: any
   calculatedMonth: string
@@ -49,6 +51,10 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   const [calculatedMonth, setCalculatedMonth] = React.useState<string>(
     `${initialMonth} ao ${finalMonth}`
   )
+
+
+  const [initialMonthInstallment, setInitialMonthInstallment] = React.useState<number>(null)
+  const [finalMonthInstallment, setFinalMonthInstallment] = React.useState<number>(null)
 
   const calculate = () => {
     const { newMonthInstallment, newTotalPaid, newTotalTaxes } =
@@ -114,6 +120,16 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   const calculateSacValues = () => {
     const { parsedValue, parsedTax, parsedTime } = getParsedValues();
 
+    const calculatedInitialMonthInstallment = sac.getInstallmentOnSpecifiedMonth(
+      parsedValue, parsedTax, parsedTime, initialMonth
+    );
+
+    const calculatedFinalMonthInstallment = sac.getInstallmentOnSpecifiedMonth(
+      parsedValue, parsedTax, parsedTime, finalMonth
+    );
+
+    setInitialMonthInstallment(calculatedInitialMonthInstallment)
+    setFinalMonthInstallment(calculatedFinalMonthInstallment)
 
     return {
       newTotalTax: sac.accumulatedTaxesBetweenSpecificTimes(
@@ -145,8 +161,8 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const getParsedValues = () => ({
-    parsedValue: Number(financingValue),
-    parsedTax: Number(financingTax) / 100,
+    parsedValue: Number(financingValue.replace(',', '.')),
+    parsedTax: Number(financingTax.replace(',', '.')) / 100,
     parsedTime: Number(financingTime)
   })
 
@@ -166,6 +182,8 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
         monthlyInstallment,
         calculatedMonth,
         simulationType,
+        initialMonthInstallment,
+        finalMonthInstallment,
         setFinancingTax,
         setFinancingTime,
         setFinancingValue,

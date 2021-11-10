@@ -30,6 +30,8 @@ const SimulationMonthlyInfo: React.FC = () => {
         calculatedMonth,
         untilMonthTaxes,
         untilMonthAmortization,
+        initialMonthInstallment,
+        finalMonthInstallment,
         toPay,
         monthlyInstallment,
         simulationType,
@@ -58,20 +60,20 @@ const SimulationMonthlyInfo: React.FC = () => {
                         >
                             <Stat textAlign="center">
                                 <StatLabel>Valor total</StatLabel>
-                                <StatNumber>R${totalPaid?.toFixed(2)}</StatNumber>
+                                <StatNumber>R${totalPaid?.toFixed(2).replace('.', ',')}</StatNumber>
                                 <StatHelpText>com juros</StatHelpText>
                             </Stat>
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
                                 <StatLabel>Juros total</StatLabel>
-                                <StatNumber>R${totalTaxes?.toFixed(2)}</StatNumber>
+                                <StatNumber>R${totalTaxes?.toFixed(2).replace('.', ',')}</StatNumber>
                             </Stat>
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
                                 <StatLabel>Mensalidade</StatLabel>
-                                <StatNumber>{monthlyInstallment}</StatNumber>
+                                <StatNumber>{monthlyInstallment.replace('.', ',')}</StatNumber>
                                 <StatHelpText>Na tabela {simulationType}</StatHelpText>
                             </Stat>
                         </GridItem>
@@ -138,44 +140,72 @@ const SimulationMonthlyInfo: React.FC = () => {
                         gap={10}
                         templateColumns={{
                             sm: "repeat(1, 1fr)",
-                            md: "repeat(4, 1fr)",
+                            lg: "repeat(4, 1fr)",
                         }}
                         pt={20}
                     >
                         <GridItem
                             colStart={{
                                 sm: 0,
-                                md: 1,
+                                lg: 1,
                             }}
                         >
                             <Stat textAlign="center">
                                 <StatLabel>Total de juros pago</StatLabel>
-                                <StatNumber>R${untilMonthTaxes.toFixed(2)}</StatNumber>
+                                <StatNumber>R${untilMonthTaxes.toFixed(2).replace('.', ',')}</StatNumber>
                                 <StatHelpText>do mês {calculatedMonth}</StatHelpText>
                             </Stat>
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
                                 <StatLabel>Total amortizado</StatLabel>
-                                <StatNumber>R${untilMonthAmortization.toFixed(2)}</StatNumber>
+                                <StatNumber>R${untilMonthAmortization.toFixed(2).replace('.', ',')}</StatNumber>
                                 <StatHelpText>do mês {calculatedMonth}</StatHelpText>
                             </Stat>
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
                                 <StatLabel>Total pago</StatLabel>
-                                <StatNumber>R${(untilMonthTaxes + untilMonthAmortization).toFixed(2)}</StatNumber>
+                                <StatNumber>R${(untilMonthTaxes + untilMonthAmortization).toFixed(2).replace('.', ',')}</StatNumber>
                                 <StatHelpText>Ao final do último mês</StatHelpText>
                             </Stat>
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
                                 <StatLabel>Saldo devedor</StatLabel>
-                                <StatNumber>R${toPay.toFixed(2)}</StatNumber>
+                                <StatNumber>R${toPay.toFixed(2).replace('.', ',')}</StatNumber>
                                 <StatHelpText>Ao final do último mês</StatHelpText>
                             </Stat>
                         </GridItem>
                     </Grid>
+                    {simulationType === 'sac' && (
+                        <Grid
+                            gap={10}
+                            templateColumns={{
+                                sm: "repeat(1, 1fr)",
+                                md: "repeat(2, 1fr)",
+                            }}
+                            pt={20}
+                        >
+                            <GridItem
+                                colStart={{
+                                    sm: 0,
+                                    md: 1,
+                                }}
+                            >
+                                <Stat textAlign="center">
+                                    <StatLabel>Parcela mês inicial</StatLabel>
+                                    <StatNumber>R${initialMonthInstallment?.toFixed(2).replace('.', ',')}</StatNumber>
+                                </Stat>
+                            </GridItem>
+                            <GridItem>
+                                <Stat textAlign="center">
+                                    <StatLabel>Parcela mês final</StatLabel>
+                                    <StatNumber>R${finalMonthInstallment?.toFixed(2).replace('.', ',')}</StatNumber>
+                                </Stat>
+                            </GridItem>
+                        </Grid>
+                    )}
                 </>
             )}
         </Stack>

@@ -48,7 +48,7 @@ const SimulationMainInfo: React.FC = () => {
                 value={financingValue}
                 onChange={e =>
                   setFinancingValue(
-                    e.target.value.replace(".", "").replace(",", ".")
+                    e.target.value
                   )
                 }
               />
@@ -72,8 +72,6 @@ const SimulationMainInfo: React.FC = () => {
             <InputGroup mt={3}>
               <InputLeftAddon bgColor="green" color="white" children="%" />
               <Input
-                max={100}
-                type="number"
                 placeholder="Digite a taxa do financiamento"
                 value={financingTax}
                 onChange={e => setFinancingTax(e.target.value)}
@@ -85,7 +83,6 @@ const SimulationMainInfo: React.FC = () => {
             <Text fontWeight="bold">Tabela</Text>
             <InputGroup mt={3}>
               <Select
-                placeholder="Selecione um tipo de financiamento"
                 onChange={(e) => { setSimulationType(e.target.value) }}
                 value={simulationType}
               >
