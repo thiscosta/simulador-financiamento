@@ -31,7 +31,13 @@ module.exports = {
                 icon: `src/images/avatar/avatar.png`, // This path is relative to the root of the site.
             },
         },
-        "@chakra-ui/gatsby-plugin"
+        "@chakra-ui/gatsby-plugin",
+        {
+            resolve: `gatsby-plugin-s3`,
+            options: {
+              bucketName: "financeira-thiscosta",
+            },
+          },
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,
