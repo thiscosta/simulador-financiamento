@@ -83,9 +83,8 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const calculateSacMainValues = () => {
-    const parsedValue = Number(financingValue)
-    const parsedTax = Number(financingTax) / 100
-    const parsedTime = Number(financingTime)
+    const { parsedValue, parsedTax, parsedTime } = getParsedValues();
+
 
     return {
       newMonthInstallment: `
@@ -98,9 +97,8 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const calculatePriceMainValues = () => {
-    const parsedValue = Number(financingValue)
-    const parsedTax = Number(financingTax) / 100
-    const parsedTime = Number(financingTime)
+    const { parsedValue, parsedTax, parsedTime } = getParsedValues();
+
 
     const coheficient = parsedTax / (1 - Math.pow(1 + parsedTax, -parsedTime))
     const newMonthInstallment = Number((parsedValue * coheficient))
@@ -114,9 +112,8 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const calculateSacValues = () => {
-    const parsedValue = Number(financingValue)
-    const parsedTax = Number(financingTax) / 100
-    const parsedTime = Number(financingTime)
+    const { parsedValue, parsedTax, parsedTime } = getParsedValues();
+
 
     return {
       newTotalTax: sac.accumulatedTaxesBetweenSpecificTimes(
@@ -132,9 +129,7 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const calculatePriceValues = () => {
-    const parsedValue = Number(financingValue)
-    const parsedTax = Number(financingTax) / 100
-    const parsedTime = Number(financingTime)
+    const { parsedValue, parsedTax, parsedTime } = getParsedValues();
 
     return {
       newTotalTax: price.accumulatedTaxesBetweenSpecificTimes(
@@ -148,6 +143,12 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
       )
     }
   }
+
+  const getParsedValues = () => ({
+    parsedValue: Number(financingValue),
+    parsedTax: Number(financingTax) / 100,
+    parsedTime: Number(financingTime)
+  })
 
   return (
     <FinancingContext.Provider
