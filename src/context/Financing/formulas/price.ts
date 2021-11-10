@@ -10,10 +10,6 @@ export const debitBalanceOnSpecificTime = (
     time: number,
     actualTime: number
 ) => {
-    const r = installment(total, tax, time)
-
-    console.log('r: ', r)
-    console.log('fva: ', fva(tax, (time - actualTime) + 1))
     return installment(total, tax, time) * fva(tax, (time - actualTime) + 1);
 }
 
