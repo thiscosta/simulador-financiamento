@@ -70,7 +70,7 @@ const SimulationMonthlyInfo: React.FC = () => {
                         </GridItem>
                         <GridItem>
                             <Stat textAlign="center">
-                                <StatLabel>Parcela mensal</StatLabel>
+                                <StatLabel>Mensalidade</StatLabel>
                                 <StatNumber>{monthlyInstallment}</StatNumber>
                                 <StatHelpText>Na tabela {simulationType}</StatHelpText>
                             </Stat>
@@ -78,14 +78,15 @@ const SimulationMonthlyInfo: React.FC = () => {
                     </Grid>
                     <Box>
                         <Grid
-                            gap={10}
+                            gap={5}
                             templateColumns={{
                                 sm: "repeat(2, 1fr)",
-                                md: "repeat(3, 1fr)",
+                                lg: "repeat(3, 1fr)",
                             }}
                         >
                             <Box>
-                                <Text fontWeight="bold">Mês inicial (começando em 0)</Text>
+                                <Text isTruncated fontWeight="bold"
+                                >Mês inicial</Text>
                                 <InputGroup mt={3}>
                                     <InputLeftAddon bgColor="green" color="white" children={<CalendarIcon />}
                                     />{" "}
@@ -117,7 +118,7 @@ const SimulationMonthlyInfo: React.FC = () => {
                             <GridItem
                                 colSpan={{
                                     sm: 2,
-                                    md: 1,
+                                    lg: 1,
                                 }}
                                 display="flex"
                                 alignItems="flex-end"

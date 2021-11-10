@@ -8,7 +8,10 @@ import SimulationMonthlyInfo from "./components/SImulationMonthlyInfo"
 
 const Home: React.FC = () => {
   return (
-    <Stack spacing={4} p={20}>
+    <Stack spacing={4} p={{
+      sm: 0,
+      lg: 20
+    }}>
       <SimulationMainInfo />
       <SimulationMonthlyInfo />
     </Stack>

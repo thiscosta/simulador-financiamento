@@ -35,7 +35,7 @@ const SimulationMainInfo: React.FC = () => {
           gap={10}
           templateColumns={{
             sm: "repeat(1, 1fr)",
-            lg: "repeat(4, 1fr)",
+            xl: "repeat(4, 1fr)",
           }}
           mb={10}
         >
@@ -56,7 +56,7 @@ const SimulationMainInfo: React.FC = () => {
           </Box>
 
           <Box>
-            <Text fontWeight="bold">Tempo do financiamento (em meses)</Text>
+            <Text fontWeight="bold">Tempo financiado</Text>
             <InputGroup mt={3}>
               <InputLeftAddon children={<CalendarIcon />} bgColor="green" color="white" />
               <Input
@@ -68,7 +68,7 @@ const SimulationMainInfo: React.FC = () => {
           </Box>
 
           <Box>
-            <Text fontWeight="bold">Taxa do financiamento (mensal)</Text>
+            <Text fontWeight="bold">Taxa (mensal)</Text>
             <InputGroup mt={3}>
               <InputLeftAddon bgColor="green" color="white" children="%" />
               <Input
@@ -82,7 +82,7 @@ const SimulationMainInfo: React.FC = () => {
           </Box>
 
           <Box>
-            <Text fontWeight="bold">Tabela de financiamento</Text>
+            <Text fontWeight="bold">Tabela</Text>
             <InputGroup mt={3}>
               <Select
                 placeholder="Selecione um tipo de financiamento"
