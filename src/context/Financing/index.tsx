@@ -90,8 +90,6 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
 
   const calculateSacMainValues = () => {
     const { parsedValue, parsedTax, parsedTime } = getParsedValues();
-
-
     return {
       newMonthInstallment: `
         R$${sac.getInstallmentOnSpecifiedMonth(parsedValue, parsedTax, parsedTime, 0).toFixed(2)}
@@ -104,8 +102,6 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
 
   const calculatePriceMainValues = () => {
     const { parsedValue, parsedTax, parsedTime } = getParsedValues();
-
-
     const coheficient = parsedTax / (1 - Math.pow(1 + parsedTax, -parsedTime))
     const newMonthInstallment = Number((parsedValue * coheficient))
     const newTotalPaid = (newMonthInstallment * parsedTime)
@@ -132,11 +128,12 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
     setFinalMonthInstallment(calculatedFinalMonthInstallment)
 
     return {
-      newTotalTax: sac.accumulatedTaxesBetweenSpecificTimes(
-        parsedValue, parsedTax, parsedTime, initialMonth, finalMonth
-      ),
+      newTotalTax: sac.accumulatedTaxesUntilSpecificTime(parsedValue, parsedTax, parsedTime, finalMonth)
+        - sac.accumulatedTaxesUntilSpecificTime(parsedValue, parsedTax, parsedTime, initialMonth),
       newTotalAmortization: sac.accumulatedAmortizationsBetweenSpecificTimes(
         parsedValue, parsedTime, finalMonth
+      ) - sac.accumulatedAmortizationsBetweenSpecificTimes(
+        parsedValue, parsedTime, initialMonth
       ),
       newToPay: sac.debitBalanceOnSpecificTime(
         parsedValue, parsedTime, finalMonth
@@ -145,12 +142,14 @@ const FinancingContextComponent: React.FC<any> = ({ children }) => {
   }
 
   const calculatePriceValues = () => {
-    const { parsedValue, parsedTax, parsedTime } = getParsedValues();
-
+    const {
+      parsedValue,
+      parsedTax,
+      parsedTime
+    } = getParsedValues();
     return {
-      newTotalTax: price.accumulatedTaxesBetweenSpecificTimes(
-        parsedValue, parsedTax, parsedTime, initialMonth, finalMonth
-      ),
+      newTotalTax: price.accumulatedTaxesUntilSpecificTime(parsedValue, parsedTax, parsedTime, finalMonth)
+        - price.accumulatedTaxesUntilSpecificTime(parsedValue, parsedTax, parsedTime, initialMonth),
       newTotalAmortization: price.accumulatedAmortizationsBetweenSpecificTimes(
         parsedValue, parsedTax, parsedTime, initialMonth, finalMonth
       ),

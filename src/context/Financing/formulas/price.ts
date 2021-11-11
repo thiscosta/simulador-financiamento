@@ -21,8 +21,20 @@ export const accumulatedAmortizationsBetweenSpecificTimes = (
     finalTime: number
 ) => {
     return installment(total, tax, totalTime) * (
-        fva(tax, totalTime - initialTime) - fva(tax, totalTime - initialTime - finalTime)
+        fva(tax, totalTime - initialTime) - fva(tax, totalTime - initialTime - (finalTime - initialTime))
     );
+}
+export const accumulatedTaxesUntilSpecificTime = (
+    total: number,
+    tax: number,
+    totalTime: number,
+    currentTime: number,
+) => {
+    return (
+        installment(total, tax, totalTime)
+        *
+        (currentTime - (fva(tax, totalTime) - fva(tax, totalTime - currentTime)))
+    )
 }
 
 export const accumulatedTaxesBetweenSpecificTimes = (

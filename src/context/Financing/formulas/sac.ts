@@ -18,6 +18,18 @@ export const accumulatedAmortizationsBetweenSpecificTimes = (
     return finalTime * amortization(total, totalTime);
 }
 
+export const accumulatedTaxesUntilSpecificTime = (
+    total: number,
+    tax: number,
+    totalTime: number,
+    currentTime: number
+) => {
+    return (
+        tax * amortization(total, totalTime) * currentTime *
+        (((2 * totalTime) - currentTime + 1) / 2)
+    )
+}
+
 export const accumulatedTaxesBetweenSpecificTimes = (
     total: number,
     tax: number,
