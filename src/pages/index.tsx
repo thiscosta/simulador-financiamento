@@ -14,4 +14,4 @@ const IndexPage = () => (
   </FinancingContextComponent>
 )
 
-export default IndexPage
+export default IndexPage;
