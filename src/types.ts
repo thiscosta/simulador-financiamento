@@ -19,10 +19,12 @@ export interface Card4Props {
   testprop6: any;
   prop7: any;
   prop8: any;
+  prop1: any;
 };
 
 export interface MeetingListItemProps {
   prop1: any;
   isHover: any;
   teste2: any;
+  prop2: any;
 };
