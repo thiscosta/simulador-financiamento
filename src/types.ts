@@ -17,5 +17,6 @@ export interface Card4Props {
   testprop1: any;
   testprop2: any;
   testprop3: any;
+  testprop4: any;
 };
 
