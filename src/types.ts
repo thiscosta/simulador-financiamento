@@ -13,8 +13,15 @@
 *
 **********************************************************************/
 
+export interface Card4Props {
+  testprop1: any;
+  testprop2: any;
+  testprop6: any;
+  prop7: any;
+};
+
 export interface MeetingListItemProps {
   prop1: any;
   isHover: any;
   teste2: any;
-  teste: any;
+  teste2: any;
