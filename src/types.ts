@@ -18,6 +18,7 @@ export interface MeetingListItemProps {
   isHover: any;
   teste2: any;
   prop2: any;
+  prop3: any;
 };
 export interface Card4Props {
   testprop1: any;
