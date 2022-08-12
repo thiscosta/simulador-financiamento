@@ -83,6 +83,7 @@ const Content = styled("div", {
   height: "100vh",  
   width: data.width,  
   overflow: fns.getScroll(),  
+  cursor: `pointer`,  
 }));
   
 const Details = styled("div")({  
@@ -137,7 +138,7 @@ function Card4(props) {
          <Image data={data} >
          </Image>
        </ImageFrame>
-       <Content props={props} data={data} fns={fns} >
+       <Content onClick={fns.handleClick} props={props} data={data} fns={fns} >
          <Details >
            <Title >
              {`15 Summer drinks to make while hosting friends`}

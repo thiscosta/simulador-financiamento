@@ -15,6 +15,7 @@ const useCard4 = () => {
   const getScroll = () => {};
 
   let fns = {getScroll};
+  const handleClick = () => {};
   return {data, fns};
 }
 
