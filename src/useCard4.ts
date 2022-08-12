@@ -17,7 +17,7 @@ const useCard4 = () => {
 
   const handleClick2 = (): any => {};
   const handleClick4 = (): any => {};
-  let fns: any = {getScroll, handleClick3, handleClick2, handleClick4, , };
+  let fns: any = {getScroll, handleClick3, handleClick2, handleClick4};
   return {data, fns};
 }
 
