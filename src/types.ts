@@ -23,4 +23,3 @@ export interface MeetingListItemProps {
   prop1: any;
   isHover: any;
 };
-
