@@ -18,6 +18,7 @@ export interface Card4Props {
   testprop2: any;
   testprop6: any;
   prop7: any;
+  prop8: any;
 };
 
 export interface MeetingListItemProps {
