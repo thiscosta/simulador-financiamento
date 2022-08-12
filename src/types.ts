@@ -9,14 +9,12 @@
 *
 *   For help and further details refer to: 
 *   https://docs.quest.ai/react/fundamentals/exporting-code
-*
 *export interface Card4Props {
   testprop1: any;
   testprop2: any;
-  testprop4: any;
-  testprop5: any;
   testprop6: any;
-};export interface MeetingListItemProps {
+};
+export interface MeetingListItemProps {
   prop1: any;
   isHover: any;
-  prop1: any;
+};
