@@ -14,7 +14,7 @@ const useCard4 = () => {
   let data = {};
   const getScroll = () => {};
 
-  let fns = {getScroll
+  let fns = {getScroll};
   return {data, fns};
 }
 
